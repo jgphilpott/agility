@@ -19,5 +19,5 @@ sudo docker build -t agility:latest .
 To run the agility container enter the command:
 
 ```
-sudo docker run -p 4444:4444 agility:latest
+sudo docker run --name agility -p 4444:4444 agility:latest
 ```
