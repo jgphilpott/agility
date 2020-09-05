@@ -4,4 +4,4 @@ ADD . /root
 
 WORKDIR /root
 
-CMD ["python3", "root.py"]
+CMD ["python3", "app/root.py"]
