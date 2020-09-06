@@ -30,3 +30,15 @@ class Motor():
 		GPIO.setup(self.step_pin, GPIO.OUT)
 		GPIO.setup(self.enable_pin, GPIO.OUT)
 		GPIO.setup(self.mode_pins, GPIO.OUT)
+
+	def set_pin(self, pin, value):
+
+		GPIO.output(pin, value)
+
+	def start(self):
+
+		self.set_pin(self.enable_pin, 0)
+
+	def stop(self):
+
+		self.set_pin(self.enable_pin, 1)
