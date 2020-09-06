@@ -1,5 +1,6 @@
+import time
 import RPi.GPIO as GPIO
-
+from datetime import datetime
 class Motor():
 
 	def __init__(self, driver="DRV8825", model="NEMA17", number=0):
@@ -8,25 +9,25 @@ class Motor():
 		self.model = model
 		self.number = number
 
-		if driver == "DRV8825":
+		if self.driver == "DRV8825":
 
-			if number == 1:
+			if self.number == 1:
 
-				self.dir_pin = 13
+				self.direction_pin = 13
 				self.step_pin = 19
 				self.enable_pin = 12
 				self.mode_pins = (16, 17, 20)
 
-			elif number == 2:
+			elif self.number == 2:
 
-				self.dir_pin = 24
+				self.direction_pin = 24
 				self.step_pin = 18
 				self.enable_pin = 4
 				self.mode_pins = (21, 22, 27)
 
 		GPIO.setmode(GPIO.BCM)
 		GPIO.setwarnings(False)
-		GPIO.setup(self.dir_pin, GPIO.OUT)
+		GPIO.setup(self.direction_pin, GPIO.OUT)
 		GPIO.setup(self.step_pin, GPIO.OUT)
 		GPIO.setup(self.enable_pin, GPIO.OUT)
 		GPIO.setup(self.mode_pins, GPIO.OUT)
@@ -54,3 +55,31 @@ class Motor():
 	def stop(self):
 
 		self.set_pin(self.enable_pin, 1)
+
+	def turn(self, direction="forward", degrees=360, duration=1, mode="1", auto_stop=False):
+
+		self.start(mode)
+
+		if direction == "forward":
+
+			self.set_pin(self.direction_pin, 0)
+
+		elif direction == "backward":
+
+			self.set_pin(self.direction_pin, 1)
+
+		if self.model == "NEMA17":
+
+			self.steps = round((6400 / 360) * degrees)
+
+		self.step_delay = duration / self.steps
+
+		for step in range(self.steps):
+
+			self.set_pin(self.step_pin, True)
+			time.sleep(self.step_delay)
+			self.set_pin(self.step_pin, False)
+
+		if auto_stop:
+
+			self.stop()
