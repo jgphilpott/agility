@@ -13,14 +13,14 @@ class Motor():
 			if number == 1:
 
 				self.dir_pin = 13
-				self.step_pin = 19        
+				self.step_pin = 19
 				self.enable_pin = 12
 				self.mode_pins = (16, 17, 20)
 
 			elif number == 2:
 
 				self.dir_pin = 24
-				self.step_pin = 18        
+				self.step_pin = 18
 				self.enable_pin = 4
 				self.mode_pins = (21, 22, 27)
 
@@ -46,8 +46,9 @@ class Motor():
 
 		self.set_pin(self.mode_pins, microstep[mode])
 
-	def start(self):
+	def start(self, mode="1"):
 
+		self.set_microstep(mode)
 		self.set_pin(self.enable_pin, 0)
 
 	def stop(self):
