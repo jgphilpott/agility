@@ -1,9 +1,9 @@
 import time
 import RPi.GPIO as GPIO
-from datetime import datetime
+
 class Motor():
 
-	def __init__(self, driver="DRV8825", model="NEMA17", number=0):
+	def __init__(self, driver="DRV8825", model="NEMA-17", number=0):
 
 		self.driver = driver
 		self.model = model
@@ -68,9 +68,13 @@ class Motor():
 
 			self.set_pin(self.direction_pin, 1)
 
-		if self.model == "NEMA17":
+		if self.model == "NEMA-17":
 
 			self.steps = round((6400 / 360) * degrees)
+
+		elif self.model == "28BJY-48":
+
+			self.steps = round((65536 / 360) * degrees)
 
 		self.step_delay = duration / self.steps
 
