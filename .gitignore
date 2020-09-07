@@ -1,5 +1,8 @@
-#Testing
+# Environment
+venv
+
+# Testing
 demo
 
-#Python
+# Python
 __pycache__
