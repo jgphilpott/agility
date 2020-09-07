@@ -60,11 +60,11 @@ class Motor():
 
 		self.start(mode)
 
-		if direction == "forward":
+		if direction == "forward" or direction == 0:
 
 			self.set_pin(self.direction_pin, 0)
 
-		elif direction == "backward":
+		elif direction == "backward" or direction == 1:
 
 			self.set_pin(self.direction_pin, 1)
 
