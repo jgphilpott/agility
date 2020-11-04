@@ -1,6 +1,4 @@
-FROM docker.pkg.github.com/jgphilpott/docker-images/pi-pack:v1
-
-RUN pip install RPi.GPIO
+FROM jgphilpott/pi-pack:mini
 
 ADD . /root
 
