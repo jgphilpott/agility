@@ -1,6 +1,4 @@
-<p align="center">
-  <img width="350" height="200" src="https://github.com/jgphilpott/agility/blob/master/app/imgs/icon.png">
-</p>
+<p align="center"><img width="350" height="200" src="https://github.com/jgphilpott/agility/blob/master/app/imgs/icon.png"></p>
 
 # Agility
 
@@ -13,11 +11,11 @@ Assuming you have [docker installed](https://docs.docker.com/get-docker), clone 
 To build the agility container enter the command:
 
 ```
-sudo docker build -t agility:latest .
+docker build -t agility:latest .
 ```
 
 To run the agility container enter the command:
 
 ```
-sudo docker run --name agility -p 4444:4444 agility:latest
+docker run --name agility -p 4444:4444 agility:latest
 ```
