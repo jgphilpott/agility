@@ -1,9 +1,9 @@
 import time
 
+from motors import Motor
+
 from threading import Thread
 from multiprocessing import Process
-
-from motors import Motor
 
 M0 = Motor("DRV8825", "NEMA-17", 1)
 M1 = Motor("DRV8825", "NEMA-17", 2)

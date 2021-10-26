@@ -1,8 +1,6 @@
-# Environment
-venv
-
-# Testing
-demo
-
 # Python
 __pycache__
+
+# DevOps
+tests
+venv
